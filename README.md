@@ -10,6 +10,9 @@
 **Project Managment(TRELLO)**
 [KANBAN BOARD](https://trello.com/b/NsJUTf2w/capstone-alx)
 
+**Entity Relationship Diagram(ERD)**
+[ERD](https://app.diagrams.net/#G1lekn2Wom29qhsDX8EC3E5F7yG98U_a2S#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D)
+
 ### 1. Initializing Git and GitHub
 Create a new directory for the project:
    ```bash
