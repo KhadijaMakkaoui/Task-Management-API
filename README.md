@@ -7,6 +7,8 @@
  - Endpoint for marking tasks as complete or incomplete.
  - Use Django ORM for database interactions.
  - Deploy the API on Heroku or PythonAnywhere.
+**Project Managment(TRELLO)**
+[KANBAN BOARD](https://trello.com/b/NsJUTf2w/capstone-alx)
 
 ### 1. Initializing Git and GitHub
 Create a new directory for the project:
