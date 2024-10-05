@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 # Create your models here.
@@ -22,7 +23,23 @@ class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
     completed_at = models.DateTimeField(null=True, blank=True)
     
+    #TO mark task's status as completed
+    def mark_complete(self):
+        self.status = 'completed'
+        self.completed_at = timezone.now()
+        self.save()
+    
+    #To mark task's status as pending
+    def mark_incomplete(self):
+        self.status = 'pending'
+        self.completed_at = None
+        self.save()
 
+    #show task title
+    def __str__(self):
+        return self.title
+    
+    
     
     
     
