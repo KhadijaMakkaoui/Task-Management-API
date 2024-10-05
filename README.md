@@ -42,3 +42,34 @@ pip freeze > requirements.txt
 python manage.py migrate
 ```
 
+### Task URLs (CRUD Operations):
+GET /tasks/ → List all tasks.
+
+POST /tasks/ → Create a new task.
+
+GET /tasks/<id>/ → Retrieve a specific task.
+
+PUT /tasks/<id>/ or PATCH /tasks/<id>/ → Update a 
+specific task.
+
+DELETE /tasks/<id>/ → Delete a specific task.
+
+User URLs (CRUD Operations):
+
+GET /users/ → List all users.
+
+POST /users/ → Create a new user.
+
+GET /users/<id>/ → Retrieve a specific user.
+
+PUT /users/<id>/ or PATCH /users/<id>/ → Update a 
+specific user.
+
+DELETE /users/<id>/ → Delete a specific user.
+
+Custom Action URLs (Using @action):
+
+PATCH /tasks/<id>/mark_complete/ → Mark a task as 
+complete.
+
+PATCH /tasks/<id>/mark_incomplete/ → Revert a task to incomplete.
