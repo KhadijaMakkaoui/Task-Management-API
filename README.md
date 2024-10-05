@@ -22,6 +22,7 @@ Create a new directory for the project:
 ### 2. Setting Up Django Project Structure
    ```bash
     pip install django
+    pip install djangorestframework
     #Create an app for managing tasks
     python manage.py startapp tasks
 ```
