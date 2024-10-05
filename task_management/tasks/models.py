@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 class Task(models.Model):
     PRIORITY_CHOICES=[
@@ -40,6 +39,10 @@ class Task(models.Model):
     def __str__(self):
         return self.title
     
+    #Validation to check due date
+    def validate_date(self):
+        if self.due_date < timezone.now().date():
+            raise Exception('Due date must be in the future.')
     
     
     
