@@ -7,6 +7,7 @@ from .models import Task
 from .serializers import TaskSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -23,6 +24,17 @@ class TaskViewSet(viewsets.ModelViewSet):
         # Automatically assign the logged-in user to the task
         serializer.save(user=self.request.user)
        
+    def update_task(request, pk):
+        task = get_object_or_404(Task, pk=pk)
+        serializer = TaskSerializer(task, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
 #@action is used for custom actions that do not align with the standard CRUD operations. 
     @action(detail=True, methods=['patch'])
     def mark_complete(self, request, pk=None):
