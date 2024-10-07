@@ -14,7 +14,8 @@ from django.shortcuts import get_object_or_404
 #CONTROLLER
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]  # Ensure user is logged in
+
     
     # return only the tasks that belong to the logged-in user
     def get_queryset(self):

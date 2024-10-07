@@ -76,3 +76,20 @@ PATCH /tasks/<id>/mark_complete/ → Mark a task as
 complete.
 
 PATCH /tasks/<id>/mark_incomplete/ → Revert a task to incomplete.
+
+##  Setting Up JWT Authentication 
+1. Install Required Packages:
+```bash
+pip install djangorestframework-simplejwt
+```
+2. Configure JWT in Django:
+```bash
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # By default, require users to be logged in
+    ],}
+```
+
