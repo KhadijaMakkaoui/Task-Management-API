@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Task
+from django.utils import timezone
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +16,7 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'description', 'due_date', 'priority_level', 'status', 'user', 'completed_at']
     
     
-    def validate(self, data):
+    def validate_staus(self, data):
         """Ensure completed tasks cannot be updated unless reverted to incomplete."""
         print(f"Current instance status: {self.instance.status if self.instance else 'No instance'}")
         print(f"New status: {data.get('status')}")
@@ -26,3 +27,9 @@ class TaskSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("You cannot update a completed task unless you revert it to incomplete.")
         
         return data
+    
+    def validate_due_date(self, value):
+        """Ensure that the due date is in the future."""
+        if value <= timezone.now().date():
+            raise serializers.ValidationError("Due date must be in the future.")
+        return value
