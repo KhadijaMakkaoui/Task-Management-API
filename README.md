@@ -92,4 +92,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',  # By default, require users to be logged in
     ],}
 ```
+3. Usage:
+You can now use the /api/token/ endpoint to obtain an access and refresh token by sending a POST request with valid user credentials (username and password).
+
+Use the /api/token/refresh/ endpoint to refresh the access token using the refresh token.
 
