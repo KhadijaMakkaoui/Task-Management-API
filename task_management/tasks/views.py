@@ -8,7 +8,8 @@ from .serializers import TaskSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter
 
 # Create your views here.
 #CONTROLLER
@@ -16,6 +17,10 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]  # Ensure user is logged in
 
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['status', 'priority', 'due_date']  # Filtering fields
+    ordering_fields = ['due_date', 'priority']  # Allow ordering by these fields
+    ordering = ['due_date']  # Default ordering by due_date
     
     # return only the tasks that belong to the logged-in user
     def get_queryset(self):
