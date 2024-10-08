@@ -44,6 +44,8 @@ class Task(models.Model):
         if self.due_date < timezone.now().date():
             raise Exception('Due date must be in the future.')
     
-    
-    
-    
+def create_user(username, email, password):
+    user = User.objects.create_user(username=username, email=email, password=password)
+    user.is_active = True  # Ensure the user is active
+    user.save()
+    return user
