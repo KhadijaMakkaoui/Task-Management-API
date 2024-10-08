@@ -2,6 +2,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from tasks.models import Task, User
+from django.contrib.auth import get_user_model
 
 class TaskTests(APITestCase):
 
@@ -83,3 +84,28 @@ class TaskTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         task.refresh_from_db()
         self.assertEqual(task.status, 'completed')
+    
+User = get_user_model()
+
+class UserTests(APITestCase):
+
+    def setUp(self):
+        # Create a user for authentication
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+
+    def test_user_login(self):
+        # Obtain a JWT token for the user
+        response = self.client.post(reverse('token_obtain_pair'), {
+            'username': 'testuser',
+            'password': 'testpassword'
+        })
+        self.assertEqual(response.status_code, status.HTTP_200_OK)  # Should return 200 OK
+        self.assertIn('access', response.data)  # Check if the access token is in the response
+
+    def test_user_login_invalid_credentials(self):
+        # Attempt to log in with invalid credentials
+        response = self.client.post(reverse('token_obtain_pair'), {
+            'username': 'testuser',
+            'password': 'wrongpassword'
+        })
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)  # Should return 401 Unauthorized
