@@ -97,3 +97,25 @@ You can now use the /api/token/ endpoint to obtain an access and refresh token b
 
 Use the /api/token/refresh/ endpoint to refresh the access token using the refresh token.
 
+4. Implement task filtering and sorting in Django REST Framework
+   1. install django filter
+```bash
+   pip install django-filter
+```
+   2. Update settings to include DjangoFilterBackend
+    Add DEFAULT_FILTER_BACKENDS to the settings.py file
+   3. Define Filters and Ordering in the View
+   
+   4. API Requests
+   Filter by status: /api/tasks/?status=pending
+
+   Filter by priority: /api/tasks/?priority=high
+
+   Filter by due date: /api/tasks/?due_date=2024-10-07
+
+   Sort by due date: /api/tasks/?ordering=due_date
+
+   Sort by priority: /api/tasks/?ordering=priority_level
+
+   if you'd like to reverse the order, use a minus sign: /api/tasks/?ordering=-priority_level
+   Filter by status and sort by due date: /api/tasks/?status=pending&ordering=due_date
