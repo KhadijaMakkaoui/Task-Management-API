@@ -18,8 +18,8 @@ class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]  # Ensure user is logged in
 
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = ['status', 'priority', 'due_date']  # Filtering fields
-    ordering_fields = ['due_date', 'priority']  # Allow ordering by these fields
+    filterset_fields = ['status', 'priority_level', 'due_date']  # Filtering fields
+    ordering_fields = ['due_date', 'priority_level']  # Allow ordering by these fields
     ordering = ['due_date']  # Default ordering by due_date
     
     # return only the tasks that belong to the logged-in user

@@ -107,14 +107,15 @@ Use the /api/token/refresh/ endpoint to refresh the access token using the refre
    3. Define Filters and Ordering in the View
    
    4. API Requests
-   Filter by status: /api/tasks/?status=Pending
+   Filter by status: /api/tasks/?status=pending
 
-   Filter by priority: /api/tasks/?priority=High
+   Filter by priority: /api/tasks/?priority=high
 
    Filter by due date: /api/tasks/?due_date=2024-10-07
 
    Sort by due date: /api/tasks/?ordering=due_date
 
-   Sort by priority: /api/tasks/?ordering=priority
-   
-   Filter by status and sort by due date: /api/tasks/?status=Pending&ordering=due_date
+   Sort by priority: /api/tasks/?ordering=priority_level
+
+   if you'd like to reverse the order, use a minus sign: /api/tasks/?ordering=-priority_level
+   Filter by status and sort by due date: /api/tasks/?status=pending&ordering=due_date
