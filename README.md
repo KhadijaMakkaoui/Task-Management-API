@@ -97,3 +97,11 @@ You can now use the /api/token/ endpoint to obtain an access and refresh token b
 
 Use the /api/token/refresh/ endpoint to refresh the access token using the refresh token.
 
+4. Implement task filtering and sorting in Django REST Framework
+   1. install django filter
+```bash
+   pip install django-filter
+```
+   2. Update settings to include DjangoFilterBackend
+    Add DEFAULT_FILTER_BACKENDS to the settings.py file
+   3. Define Filters and Ordering in the View
