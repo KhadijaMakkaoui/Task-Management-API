@@ -5,8 +5,16 @@ from .models import Task
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
-    
+        fields = ['username', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        # Create a new user and set it to active
+        # **validated_data:  It allows you to pass key-value pairs in a dictionary as keyword arguments to a function.
+        user = User.objects.create_user(**validated_data)
+        user.is_active = True  # Ensure the user is active
+        user.save()
+        return user
 class TaskSerializer(serializers.ModelSerializer):
     # Assign automatically based on the logged-in user
     user = UserSerializer(read_only=True)  
