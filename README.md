@@ -44,7 +44,15 @@ pip freeze > requirements.txt
 #Run initial migrations for the project
 python manage.py migrate
 ```
+### Configure PostgreSQL db
+Install PostgreSQL and psycopg2
+First, ensure that PostgreSQL is installed on your system. You will also need the psycopg2 package to allow Django to interact with the PostgreSQL database.
+- Install psycopg2 using pip:
 
+```bash
+pip install psycopg2
+```
+- Modify the DATABASES setting in the settings.py file to use PostgreSQL instead of SQLite.
 ### Task URLs (CRUD Operations):
 GET /tasks/ → List all tasks.
 
