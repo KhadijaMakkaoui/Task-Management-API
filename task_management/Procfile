@@ -1,4 +1,4 @@
 web: gunicorn Task-Management-API.task_management.wsgi --log-file -
-echo "web: gunicorn Task-Management-API.task_management.wsgi --log-file -" > Procfile
+# echo "web: gunicorn Task-Management-API.task_management.wsgi --log-file -" > Procfile
 
 
