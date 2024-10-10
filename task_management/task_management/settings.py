@@ -106,10 +106,9 @@ WSGI_APPLICATION = 'task_management.wsgi.application'
 #     }
 # }
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://postgres:root@localhost:5432/task_management_db'
-    )
+    'default': dj_database_url.config(conn_max_age=600)
 }
+
 
 
 # Password validation
