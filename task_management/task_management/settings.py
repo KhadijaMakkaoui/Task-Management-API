@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -93,15 +94,20 @@ WSGI_APPLICATION = 'task_management.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'task_management_db',  # Name of the PostgreSQL database
+#         'USER': 'postgres',              # PostgreSQL username
+#         'PASSWORD': 'root',      # PostgreSQL password
+#         'HOST': 'localhost',           # Or use your database host
+#         'PORT': '5432',                # Default PostgreSQL port
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'task_management_db',  # Name of the PostgreSQL database
-        'USER': 'postgres',              # PostgreSQL username
-        'PASSWORD': 'root',      # PostgreSQL password
-        'HOST': 'localhost',           # Or use your database host
-        'PORT': '5432',                # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(
+        default='postgres://postgres:root@localhost:5432/task_management_db'
+    )
 }
 
 
