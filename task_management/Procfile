@@ -1,0 +1,2 @@
+web: gunicorn task_management.wsgi --log-file -
+echo "web: gunicorn task_management.wsgi --log-file -" > Procfile
