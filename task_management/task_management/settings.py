@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-=bwp)-b@zo)m4+n2pt*^-qxr6!ljvch^rzoi#q&3k18m-iy5pk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']  # In production, use the actual domain
+ALLOWED_HOSTS = ['127.0.0.1',"khadijadija.pythonanywhere.com"]  # In production, use the actual domain
 
 # Application definition
 
@@ -108,9 +108,21 @@ WSGI_APPLICATION = 'task_management.wsgi.application'
 #         'PORT': '5432',                # Default PostgreSQL port
 #     }
 # }
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600)
+# }
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'khadijadija$task_management_db',
+        'USER': 'khadijadija',
+        'PASSWORD': 'admin@gmail.com',
+        'HOST': 'khadijadija.mysql.pythonanywhere-services.com',
+        #'PORT': '3306',
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+    }
 }
+
 
 
 

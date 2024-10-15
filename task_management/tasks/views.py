@@ -43,13 +43,13 @@ class TaskViewSet(viewsets.ModelViewSet):
     
 #@action is used for custom actions that do not align with the standard CRUD operations. 
     @action(detail=True, methods=['patch'])
-    def mark_complete(self, request, pk=None):
+    def mark_complete(self):
         task = self.get_object()
         task.mark_complete()
         return Response({'status': 'Task marked as complete'})
     
     @action(detail=True, methods=['patch'])
-    def mark_incomplete(self, request, pk=None):
+    def mark_incomplete(self):
         task = self.get_object()
         task.mark_incomplete()
         return Response({'status': 'Task reverted to incomplete'})

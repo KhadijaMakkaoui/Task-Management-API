@@ -128,9 +128,4 @@ Use the /api/token/refresh/ endpoint to refresh the access token using the refre
    if you'd like to reverse the order, use a minus sign: /api/tasks/?ordering=-priority_level
    Filter by status and sort by due date: /api/tasks/?status=pending&ordering=due_date
 
-# Deployment with Heroku
-push changes to heroku and run migrations
-```bash
-git push heroku main
-heroku run python task_management/manage.py migrate 
-```
+# Deployment with PythonAnywhere
